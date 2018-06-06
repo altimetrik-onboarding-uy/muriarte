@@ -2,11 +2,12 @@
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
     <fields>
         <fullName>Total_Points_Awared__c</fullName>
+        <defaultValue>0</defaultValue>
         <externalId>false</externalId>
         <label>Total Points Awared</label>
         <precision>18</precision>
         <required>false</required>
-        <scale>1</scale>
+        <scale>2</scale>
         <trackFeedHistory>false</trackFeedHistory>
         <type>Number</type>
         <unique>false</unique>
