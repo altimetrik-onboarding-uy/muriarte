@@ -19,15 +19,15 @@ trigger UpdateTotalPointsAw on Task__c (after insert, after update) {
 
         if(t.Status__c == 'Completed')
         {
-         // TO-DO Tasks in Time
+         // TO-DO Tasks Overdue
             IF((t.Due_Date__c < date.today()) && (t.RecordTypeId == TaskRTtodo) )
             {
                 decimal PointsToRest = t.Points_Awareded__c / 2;
                 c.Total_Points_Awared__c -= PointsToRest ;
             }
 
-         // TO-DO Tasks Overdue
-            ELSE IF((t.Due_Date__c > date.today()) && (t.RecordTypeId == TaskRTtodo))
+         // TO-DO Tasks in Time
+            ELSE IF(((t.Due_Date__c >= date.today()) ||(t.Due_Date__c==null)) && (t.RecordTypeId == TaskRTtodo))
             {
                 c.Total_Points_Awared__c += t.Points_Awareded__c;
             }
