@@ -30,12 +30,41 @@
         <name>ApexTrigger</name>
     </types>
     <types>
+        <members>Habit_Tracker_Lightning</members>
+        <name>CustomApplication</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>CustomApplicationComponent</name>
+    </types>
+    <types>
         <members>Contact.Total_Points_Awared__c</members>
         <name>CustomField</name>
     </types>
     <types>
         <members>Task__c</members>
         <name>CustomObject</name>
+    </types>
+    <types>
+        <members>Task__c</members>
+        <name>CustomTab</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>GlobalPicklist</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>HomePageComponent</name>
+    </types>
+    <types>
+        <members>Contact-Contact Layout</members>
+        <members>Task-Task Layout</members>
+        <members>Task__c-DailyLayout</members>
+        <members>Task__c-HabitLayout</members>
+        <members>Task__c-TO-DOLayout</members>
+        <members>Task__c-Task Layout</members>
+        <name>Layout</name>
     </types>
     <types>
         <members>Contact</members>
