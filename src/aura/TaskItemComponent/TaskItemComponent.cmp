@@ -1,0 +1,27 @@
+<aura:component controller="TaskItemController">
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+  <aura:attribute name="Task" type="Task__c" required="true"/>
+  <aura:attribute name="statusOptions" type="List" default="[]" />
+  <aura:registerEvent name="reRenderTaskTable" type="c:UpdateTaskStatus" />
+
+    <lightning:card title="{!v.Task.Name}" iconName="standard:timesheet"
+                    class="">
+    <p class="slds-p-horizontal--medium">
+      <p>
+        {!v.Task.Difficulty__c}
+      </p>
+      <p>
+        {!v.Task.Description__c}
+      </p>
+      <p>
+        <lightning:combobox label="Status"
+           value="{!v.Task.Status__c}"
+           options="{!v.statusOptions}"
+           class="slds-combobox"
+           onchange="{!c.NewTaskStatus}"/>
+      </p>
+    </p>
+
+
+    </lightning:card>
+</aura:component>

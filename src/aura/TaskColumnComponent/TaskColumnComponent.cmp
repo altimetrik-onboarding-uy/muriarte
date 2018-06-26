@@ -1,0 +1,12 @@
+<aura:component>
+  <aura:attribute name="listTasks" type="Task__c[]"/>
+<!--  <aura:attribute name="ltask" type="Task__c" /> -->
+    <div id="list" class="row">
+      <span>
+        <aura:iteration items="{!v.listTasks}" var="cTask">
+
+          <c:GenericTaskItem Task="{!cTask}"/>
+        </aura:iteration>
+      </span>
+    </div>
+</aura:component>

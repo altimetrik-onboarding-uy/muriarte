@@ -19,9 +19,22 @@ trigger UpdateTotalPointsAw on Task__c (after insert, after update) {
 
       // need the previous status of my record, if any
       //...
-      Task__c beforeTriggerRecord = Trigger.oldMap.get(t.Id); // get the previous version of my task, if any
-      // get previous status if there is one, or set to null if there is none
+
+      Task__c beforeTriggerRecord = t;
+      // beforeTriggerRecord is the record to be updated till this point
+      if(c.Total_Points_Awared__c == null)
+      {
+        c.Total_Points_Awared__c = 0;
+      }
+
+      if(trigger.isUpdate)
+      {
+        beforeTriggerRecord = Trigger.oldMap.get(t.Id); // get the previous version of my task, if any
+        // get previous status if there is one, or set to null if there is none
+      }
+
       String previousStatus = null;
+
       if (beforeTriggerRecord != null) {
           previousStatus = beforeTriggerRecord.Status__c;
       }
@@ -32,6 +45,7 @@ trigger UpdateTotalPointsAw on Task__c (after insert, after update) {
             IF((t.Due_Date__c < date.today()) && (t.RecordTypeId == TaskRTtodo) )
             {
                 decimal PointsToRest = t.Points_Awareded__c / 2;
+
                 c.Total_Points_Awared__c -= PointsToRest;
             }
 

@@ -1,0 +1,36 @@
+<aura:component controller="TaskItemController">
+<aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+<aura:attribute name="Task" type="Task__c" required="true"/>
+<aura:attribute name="TaskContact" type="Contact"/>
+
+    <lightning:card title="{!v.Task.Name}" iconName="standard:timesheet"
+                    class="">
+    <p class="slds-p-horizontal--medium">
+        <lightning:layout>
+          <div style="height: 5px margin: 5px" >
+          <lightning:button variant="success" label="+" title="Habit done"
+            class="slds-button" onclick="{!c.DoneHabit}"/>
+        </div>
+        <table>
+        <tr>
+          <div>
+            {!v.Task.Difficulty__c}
+         </div>
+      </tr>
+        <span>
+          <div>
+           {!v.Task.Description__c}
+        </div>
+        </span>
+      </table>
+        <div style="height: 5px margin: 5px" >
+          <lightning:button variant="destructive" label="-" title="Habit done"
+            class="slds-button" onclick="{!c.UndoneHabit}"/>
+        </div>
+
+      </lightning:layout>
+    </p>
+    </lightning:card>
+
+</aura:component>

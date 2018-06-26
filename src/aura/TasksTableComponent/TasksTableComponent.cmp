@@ -1,0 +1,42 @@
+<aura:component controller="TaskItemController" implements= "force:appHostable, flexipage:availableForAllPageTypes" >
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}"  />
+  <aura:handler name="reRenderTaskTable" event="c:UpdateTaskStatus" action="{!c.doInit}" />
+  <aura:attribute name="listTasks" type="Task__c[]" />
+  <aura:attribute name="Task" type="Task__c" />
+
+  <aura:attribute name="mapTasks" type="Map" default="{}" />
+  <aura:attribute name="ToDoTasks" type="List"  />
+  <aura:attribute name="DailyTasks" type="List"  />
+  <aura:attribute name="HabitTasks" type="List"  />
+
+   <lightning:card title="Tasks Items">
+     <div class="slds-grid">
+       <div class="slds-col slds-p-horizontal_medium">
+         <span>
+           <div id="list" class="row">
+             <p> Habits </p>
+             <c:TaskColumnComponent listTasks="{!v.HabitTasks}"/>
+           </div>
+         </span>
+       </div>
+       <div class="slds-col slds-p-horizontal_medium">
+         <span>
+           <div id="list" class="row">
+             <p> Dailies </p>
+             <c:TaskColumnComponent listTasks="{!v.DailyTasks}"/>
+           </div>
+         </span>
+       </div>
+       <div class="slds-col slds-p-horizontal_medium">
+         <span>
+           <div id="list" class="row">
+             <p> TO-DOs </p>
+             <c:TaskColumnComponent listTasks="{!v.ToDoTasks}"/>
+           </div>
+         </span>
+
+       </div>
+     </div>
+    </lightning:card>
+
+</aura:component>
