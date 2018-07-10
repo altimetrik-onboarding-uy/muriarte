@@ -5,4 +5,5 @@
     <label>Habit Tracker Lightning</label>
     <tab>standard-Contact</tab>
     <tab>Task__c</tab>
+    <tab>Tasks_Table</tab>
 </CustomApplication>

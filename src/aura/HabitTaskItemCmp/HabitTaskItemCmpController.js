@@ -1,7 +1,6 @@
 ({
 	doInit : function(component, event, helper){
 
-		helper.getTaskContact(component,event);
 
 	},
 

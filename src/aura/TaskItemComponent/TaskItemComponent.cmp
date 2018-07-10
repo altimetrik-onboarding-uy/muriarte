@@ -18,7 +18,7 @@
            value="{!v.Task.Status__c}"
            options="{!v.statusOptions}"
            class="slds-combobox"
-           onchange="{!c.NewTaskStatus}"/>
+           onchange="{!c.OnChangingTaskStatus}"/>
       </p>
     </p>
 

@@ -1,13 +1,14 @@
-<aura:component controller="TaskItemController" implements= "force:appHostable, flexipage:availableForAllPageTypes" >
+<aura:component controller="TaskItemController" implements= "force:appHostable,flexipage:availableForAllPageTypes">
   <aura:handler name="init" value="{!this}" action="{!c.doInit}"  />
-  <aura:handler name="reRenderTaskTable" event="c:UpdateTaskStatus" action="{!c.doInit}" />
+  <aura:handler name="reRenderTaskTable" event="c:UpdateTaskStatus" action="{!c.TaskMoveToCompleted}" />
   <aura:attribute name="listTasks" type="Task__c[]" />
   <aura:attribute name="Task" type="Task__c" />
+  <aura:attribute name="TaskMovedToCompleted" type="Task__c"/>
 
   <aura:attribute name="mapTasks" type="Map" default="{}" />
-  <aura:attribute name="ToDoTasks" type="List"  />
-  <aura:attribute name="DailyTasks" type="List"  />
-  <aura:attribute name="HabitTasks" type="List"  />
+  <aura:attribute name="ToDoTasks" type="Task__c[]"  />
+  <aura:attribute name="DailyTasks" type="Task__c[]"  />
+  <aura:attribute name="HabitTasks" type="Task__c[]"  />
 
    <lightning:card title="Tasks Items">
      <div class="slds-grid">

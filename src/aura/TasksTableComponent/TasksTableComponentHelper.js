@@ -1,6 +1,5 @@
 ({
 	createMap : function(component, event) {
-
 		var action = component.get("c.getTaskItems");
 
 		action.setCallback(this, function(response){
@@ -9,7 +8,7 @@
 
 			if(state === "SUCCESS")
 			{
-				console.log(JSON.parse(JSON.stringify(response.getReturnValue())));
+				//console.log(JSON.parse(JSON.stringify(response.getReturnValue())));
 				component.set("v.listTasks", response.getReturnValue());
 				var map = [];
 				for(var task of (response.getReturnValue()))
@@ -31,7 +30,7 @@
 
 					}
 				}
-				console.log('## ', map);
+				//console.log('## ', map);
 				component.set('v.mapTasks', map);
 
 				// Genero una lista para cada tipo de tarea
@@ -44,7 +43,7 @@
 						TDtask.push(name);
 					}
 					component.set('v.ToDoTasks', TDtask);
-					console.log(TDtask);
+					//console.log(TDtask);
 				}
 
 				var Dtask = [];
@@ -55,7 +54,7 @@
 						Dtask.push(name);
 					}
 					component.set('v.DailyTasks', Dtask);
-					console.log(Dtask);
+					//console.log(Dtask);
 				}
 
 				var Htask = [];
@@ -65,7 +64,7 @@
 					Htask.push(name);
 				}
 				component.set('v.HabitTasks', Htask);
-				console.log(Htask);
+				//console.log(Htask);
 
 			}
 			else {
@@ -74,6 +73,29 @@
 		});
 
 		$A.enqueueAction(action);
+
+	},
+
+	refreshTasksList : function(component, task){
+
+
+		if(task.RecordType.Name==='TO-DO')
+		{
+			var TaskTODOlist = component.get('v.ToDoTasks');
+			var newList = TaskTODOlist.filter((a) => a.Status__c != 'Completed');
+			component.set('v.ToDoTasks', newList);
+
+		}
+
+		else if(task.RecordType.Name==='Daily')
+		{
+			var TaskDailyList  = component.get('v.DailyTasks');
+
+			var newList = TaskDailyList.filter((a) => a.Status__c != 'Completed');
+			component.set('v.DailyTasks', newList);
+		}
+
+
 
 	},
 

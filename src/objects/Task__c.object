@@ -156,6 +156,14 @@
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
+    <listViews>
+        <fullName>TaskXType</fullName>
+        <columns>NAME</columns>
+        <columns>Status__c</columns>
+        <columns>RECORDTYPE</columns>
+        <filterScope>Mine</filterScope>
+        <label>TaskXType</label>
+    </listViews>
     <nameField>
         <label>Task Name</label>
         <type>Text</type>

@@ -1,3 +1,3 @@
 <aura:event type="COMPONENT" description="Event to refresh Table component" >
-  <!--<aura:attribute name="UpdateTaskStatus" type="string" /> -->
+  <aura:attribute name="TaskMovedToCompleted" type="Task__c" />
 </aura:event>

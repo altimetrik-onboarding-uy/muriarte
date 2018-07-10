@@ -7,14 +7,13 @@
         ];
         component.set("v.statusOptions", options);
 				// var obj = JSON.parse(JSON.stringify(component.get('v.cTask')));
-				console.log('### ', component.get('v.Task'));
+				//console.log('### ', component.get('v.Task'));
     },
 
-		NewTaskStatus : function(component, event, helper){
+		OnChangingTaskStatus : function(component, event, helper){
 
 			var TaskToUpdate = component.get("v.Task");
 			var action = component.get("c.updateTask");
-
 
 			action.setParam("updateTask", TaskToUpdate);
 			action.setCallback(this, function(response){
@@ -27,8 +26,7 @@
 					// Para que ande bien el update borrar el IF que le sigue
 					if(TaskToUpdate.Status__c === "Completed")
 					{
-
-						helper.FireRenderEvent(component, event);
+						helper.FireRenderEvent(component, TaskToUpdate);
 					}
 				}
 				else {

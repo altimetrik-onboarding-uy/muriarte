@@ -2,7 +2,6 @@
 <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
 
 <aura:attribute name="Task" type="Task__c" required="true"/>
-<aura:attribute name="TaskContact" type="Contact"/>
 
     <lightning:card title="{!v.Task.Name}" iconName="standard:timesheet"
                     class="">

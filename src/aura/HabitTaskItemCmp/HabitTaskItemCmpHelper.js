@@ -1,51 +1,18 @@
 ({
-	getTaskContact : function(component, event) {
-
-		var Task = component.get("v.Task");
-		var action = component.get("c.getTaskContactApex");
-
-		console.log(Task);
-
-		action.setParam("task", Task);
-
-		action.setCallback(this, function(response){
-
-		var state = response.getState();
-
-		if(state === "SUCCESS")
-		{
-			component.set("v.TaskContact", response.getReturnValue());
-		}
-		else if (state === "ERROR") {
-
-			console.log("Error description: " + response.getError());
-		}
-		else{
-			console.log("Error description: otro error" );
-		}
-		});
-
-		$A.enqueueAction(action);
-},
-
 	DoneHabit : function(component, event){
 
 	var Task = component.get("v.Task");
-	var Contact = component.get("v.TaskContact");
+	Task.Contact__r.Total_Points_Awared__c += 1;
 
-	Contact.Total_Points_Awared__c += 1;
+	var action = component.get("c.updateContact");
 
-	var action = component.get("c.ContactHabitDone");
-
-	action.setParam("contactTask", Contact);
+	action.setParam("contact", Task.Contact__r);
 	action.setCallback(this, function(response){
 
 	var state = response.getState();
-	console.log(Contact.Total_Points_Awared__c);
-
 	if(state==="SUCCESS")
 	{
-		console.log("## ", Contact.Total_Points_Awared__c);
+		console.log("## ", Task.Contact__r.Total_Points_Awared__c);
 	}
 	else if(state==="ERROR"){
 		console.log("Error description: "+ response.getError());
@@ -57,21 +24,19 @@
 
 	UndoneHabit : function(component, event){
 		var Task = component.get("v.Task");
-		var Contact = component.get("v.TaskContact");
 
-		Contact.Total_Points_Awared__c -= 1;
+		Task.Contact__r.Total_Points_Awared__c -= 1;
 
-		var action = component.get("c.ContactHabitDone");
+		var action = component.get("c.updateContact");
 
-		action.setParam("contactTask", Contact);
+		action.setParam("contact", Task.Contact__r);
 		action.setCallback(this, function(response){
 
 		var state = response.getState();
-		console.log(Contact.Total_Points_Awared__c);
 
 		if(state==="SUCCESS")
 		{
-			console.log("## ", Contact.Total_Points_Awared__c);
+			console.log("## ", Task.Contact__r.Total_Points_Awared__c);
 		}
 		else if(state==="ERROR"){
 			console.log("Error description: "+ response.getError());
