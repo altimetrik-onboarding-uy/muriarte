@@ -82,7 +82,7 @@
 		if(task.RecordType.Name==='TO-DO')
 		{
 			var TaskTODOlist = component.get('v.ToDoTasks');
-			var newList = TaskTODOlist.filter((a) => a.Status__c != 'Completed');
+			var newList = TaskTODOlist.filter((a) => a.Id != task.Id);
 			component.set('v.ToDoTasks', newList);
 
 		}
@@ -91,7 +91,7 @@
 		{
 			var TaskDailyList  = component.get('v.DailyTasks');
 
-			var newList = TaskDailyList.filter((a) => a.Status__c != 'Completed');
+			var newList = TaskDailyList.filter((a) => a.Id != task.Id);
 			component.set('v.DailyTasks', newList);
 		}
 
